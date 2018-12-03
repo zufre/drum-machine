@@ -3,6 +3,7 @@ import "./Drumpad.css";
 
 export default class DrumPad extends React.Component {
   componentDidMount() {
+    console.log(this.audio);
     document.addEventListener("keydown", this.handleKeydown);
     window.focus();
   }
@@ -27,13 +28,13 @@ export default class DrumPad extends React.Component {
 
   render() {
     return (
-      <div id={this.props.id} className="drum-pad" onCLick={this.handleClick}>
+      <div className="drum-pad" id={this.props.id} onClick={this.handleClick}>
         <h1>{this.props.letter}</h1>
         <audio
-          ref={ref => (this.audio = ref)}
+          id={this.props.letter}
           className="clip"
           src={this.props.src}
-          id={this.props.letter}
+          ref={ref => (this.audio = ref)}
         />
       </div>
     );
