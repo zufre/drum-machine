@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import Drumpad from "./Drumpad";
+
 const data = [
   {
     id: "snare",
@@ -50,11 +51,28 @@ const data = [
 ];
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      display: "Click or Press a Key"
+    };
+  }
+  handleDisplay = display => this.setState({ display });
+
   render() {
     return (
       <div id="drum-machine">
-        <div id="display">
-          <Drumpad />
+        <div id="display">{this.state.display}</div>
+        <div id="drum-pads">
+          {data.map(d => (
+            <Drumpad
+              key={d.id}
+              id={d.id}
+              letter={d.letter}
+              src={d.src}
+              handleDisplay={this.handleDisplay}
+            />
+          ))}
         </div>
       </div>
     );
