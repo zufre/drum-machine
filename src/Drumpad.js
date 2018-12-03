@@ -1,7 +1,7 @@
 import React from "react";
 import "./Drumpad.css";
 
-export default class Drumpad extends React.Component {
+export default class DrumPad extends React.Component {
   componentDidMount() {
     document.addEventListener("keydown", this.handleKeydown);
     window.focus();
